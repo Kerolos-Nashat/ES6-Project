@@ -1,0 +1,73 @@
+body{
+    background-color: rgb(184, 238, 246);
+}
+
+nav{
+    background-color: rgb(255, 255, 255);
+}
+ 
+.product-img {
+    height: 200px;
+    object-fit: contain;   
+}
+
+.product-img {
+    max-height: 350px;
+    object-fit: contain;
+}
+
+.card a:hover h6 {
+    text-decoration: underline;
+}
+
+.product-click {
+    cursor: pointer;
+}
+
+.product-card:hover {
+    box-shadow: 0 0 10px rgba(0,0,0,0.15);
+}
+.slider {
+    position: relative;
+    width: 100%;
+    max-width: 800px;
+    margin: 30px auto;
+    overflow: hidden;
+}
+
+.slides {
+    position: relative;
+    height: 300px;
+}
+
+.slide {
+    width: 100%;
+    height: 300px;
+    object-fit: contain;
+    display: none;
+}
+
+.slide.active {
+    display: block;
+}
+
+.slider button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0,0,0,0.5);
+    color: white;
+    border: none;
+    font-size: 30px;
+    padding: 5px 12px;
+    cursor: pointer;
+}
+
+.prev {
+    left: 10px;
+}
+
+.next {
+    right: 10px;
+}
+
