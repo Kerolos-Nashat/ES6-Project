@@ -9,24 +9,34 @@ const prevBtn = document.querySelector(".prev");
 let currentIndex = 0;
 
 function showSlide(index) {
+    if (!slides || slides.length === 0) return;
     slides.forEach(slide => slide.classList.remove("active"));
     slides[index].classList.add("active");
 }
 
-nextBtn.addEventListener("click", () => {
-    currentIndex = (currentIndex + 1) % slides.length;
-    showSlide(currentIndex);
-});
+if (slides && slides.length > 0) {
+    // attach handlers only when buttons exist
+    if (nextBtn) {
+        nextBtn.addEventListener("click", () => {
+            currentIndex = (currentIndex + 1) % slides.length;
+            showSlide(currentIndex);
+        });
+    }
 
-prevBtn.addEventListener("click", () => {
-    currentIndex = (currentIndex - 1 + slides.length) % slides.length;
-    showSlide(currentIndex);
-});
+    if (prevBtn) {
+        prevBtn.addEventListener("click", () => {
+            currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+            showSlide(currentIndex);
+        });
+    }
 
-setInterval(() => {
-    currentIndex = (currentIndex + 1) % slides.length;
-    showSlide(currentIndex);
-}, 3000);
+    if (slides.length > 1) {
+        setInterval(() => {
+            currentIndex = (currentIndex + 1) % slides.length;
+            showSlide(currentIndex);
+        }, 3000);
+    }
+}
 
 
 const container = document.getElementById("products");
@@ -54,31 +64,26 @@ async function getProducts() {
 function displayProducts(products) {
     container.innerHTML = "";
 
-    products.forEach(product => {
-        container.innerHTML += `
-            <div class="col-md-4 mb-4">
-                <div class="card h-100 p-3">
-
-                    <a href="productDetails.html?id=${product.id}"
-                       class="text-decoration-none text-dark">
-
-                        <img src="${product.image}"
-                             class="card-img-top product-img">
-
-                        <h6 class="mt-2">${product.title}</h6>
-                    </a>
-
-                    <p>${product.price} EGP</p>
-                    <p>Size: ${product.size}</p>
-
-                    <button class="btn btn-primary w-100"
-                        onclick="addToCart(${product.id})">
-                        Add to Cart
-                    </button>
-                </div>
-            </div>
-        `;
-    });
+        products.forEach(product => {
+                const price = Number(product.price).toFixed(2);
+                container.innerHTML += `
+                        <div class="col-sm-6 col-md-4 mb-4">
+                            <div class="product-card h-100">
+                                <a href="ProductDetails.html?id=${product.id}" class="text-decoration-none text-dark">
+                                    <img src="${product.image}" alt="${product.title}" class="product-img">
+                                    <h6 class="mt-2">${product.title}</h6>
+                                </a>
+                                <div class="mt-auto">
+                                    <div class="d-flex justify-content-between align-items-center mb-2">
+                                        <div class="price">${price} EGP</div>
+                                        <div class="small text-muted">Size: ${product.size}</div>
+                                    </div>
+                                    <button class="btn btn-primary w-100" onclick="addToCart(${product.id})">Add to Cart</button>
+                                </div>
+                            </div>
+                        </div>
+                `;
+        });
 }
 
 

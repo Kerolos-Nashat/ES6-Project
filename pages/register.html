@@ -1,32 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Register</title>
-
-   
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../css/style.css">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Register</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
 
-<div class="container vh-100 d-flex justify-content-center align-items-center">
-    <div class="card p-5" style="width: 400px;">
-        <h3 class="text-center mb-3">Register</h3>
+<header class="site-header mb-4">
+    <div class="container d-flex align-items-center justify-content-between">
+        <div class="brand"><a href="home.html">Smart Store</a></div>
+        <div class="nav-actions"><a href="login.html" class="btn btn-link small">Login</a></div>
+    </div>
+</header>
 
+<main class="container vh-100 d-flex justify-content-center align-items-center">
+    <div class="auth-card w-100">
+        <h3 class="text-center mb-3">Create account</h3>
         <form id="registerForm">
-            <input type="text" id="name" class="form-control mb-3" placeholder="Enter Name">
-            <input type="email" id="email" class="form-control mb-3" placeholder="Enter Email">
-            <input type="password" id="password" class="form-control mb-3" placeholder="Enter Password">
-            <input type="password" id="confirm" class="form-control mb-3" placeholder="Confirm Password">
-
+            <div class="mb-3">
+                <label class="form-label small text-muted">Name</label>
+                <input type="text" id="name" class="form-control" placeholder="Full name" required>
+            </div>
+            <div class="mb-3">
+                <label class="form-label small text-muted">Email</label>
+                <input type="email" id="email" class="form-control" placeholder="you@example.com" required>
+            </div>
+            <div class="mb-3">
+                <label class="form-label small text-muted">Password</label>
+                <input type="password" id="password" class="form-control" placeholder="Password" required>
+            </div>
+            <div class="mb-3">
+                <label class="form-label small text-muted">Confirm</label>
+                <input type="password" id="confirm" class="form-control" placeholder="Confirm password" required>
+            </div>
             <p id="error" class="text-danger small"></p>
-            <a href="login.html" class="text-decoration-none">Login</a>
-            <button class="btn btn-primary w-100 mt-2">Register</button>
+            <div class="d-flex justify-content-between align-items-center">
+                <a href="login.html" class="small">Already have an account?</a>
+                <button class="btn btn-primary">Register</button>
+            </div>
         </form>
     </div>
-</div>
+</main>
 
+<footer class="site-footer">
+    <div class="container d-flex justify-content-between">
+        <div class="small text-muted">Privacy · Terms</div>
+        <div class="small text-muted">© <span id="yearReg"></span> Smart Store</div>
+    </div>
+</footer>
+
+<script>document.getElementById('yearReg').textContent=new Date().getFullYear();</script>
 <script src="../js/auth.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
