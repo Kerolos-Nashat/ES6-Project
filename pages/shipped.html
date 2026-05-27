@@ -8,12 +8,10 @@
 </head>
 <body class="bg-light">
     <script>
-        // Prevent direct access to this page unless a purchase was just made (session-only)
         if (sessionStorage.getItem('hasPurchased') !== 'true') {
             // use replace so user can't use back to bypass
             location.replace('./cart.html');
         } else {
-            // consume the flag so user can't revisit shipped page without a new purchase
             sessionStorage.removeItem('hasPurchased');
         }
     </script>
@@ -26,11 +24,9 @@
     </div>
 </div>
     <script>
-        // Prevent direct access to this page unless a purchase was just made (session-only)
         if (sessionStorage.getItem('hasPurchased') !== 'true') {
             window.location.href = 'cart.html';
         } else {
-            // consume the flag so user can't revisit shipped page without a new purchase
             sessionStorage.removeItem('hasPurchased');
         }
     </script>
