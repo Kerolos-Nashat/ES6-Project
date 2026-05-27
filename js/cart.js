@@ -83,6 +83,14 @@ function updateCart() {
 }
 
 function checkout() {
+    // ensure there's at least one item in the cart
+    if (!cart || cart.length === 0) {
+        alert('Your cart is empty. Add items before checkout.');
+        return;
+    }
+
+    // mark that a purchase was made so shipped page can be accessed (session-only)
+    sessionStorage.setItem("hasPurchased", "true");
     localStorage.removeItem("cart");
     window.location.href = "shipped.html";
 }
